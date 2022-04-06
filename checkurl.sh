@@ -2,7 +2,7 @@
 
 while read line
 do
-  if [[ $line =~ \* ]] || [[ $line =~ $\. ]]; then
+  if [[ $line =~ \* ]] || [[ $line =~ ^\. ]]; then
     echo "${line}| ERROR not URL"
     break
   fi
