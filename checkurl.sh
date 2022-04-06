@@ -2,7 +2,7 @@
 
 while read line
 do
-  $host=$(echo $line | cut -f1 -d/)
+  host=$(echo $line | cut -f1 -d/)
   host $host
   result=$?
   if [ "$result" -eq "0" ]; then
