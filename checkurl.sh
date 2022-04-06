@@ -2,6 +2,10 @@
 
 while read line
 do
+  if [[ $line =~ \* ]]; then
+    echo "${line}| NOT URL"
+    break
+  fi
   host=$(echo $line | cut -f1 -d/)
   host $host > /dev/null 2>&1
   result=$?
