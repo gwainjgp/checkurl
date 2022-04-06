@@ -15,7 +15,11 @@ do
   result=$?
   if [ "$result" -eq "0" ]; then
     response=$(curl -I $line  2>/dev/null | head -n 1 | cut -d$' ' -f2 )
-    echo "${line}|${response}"
+    if [ "$reponse" -eq ""]; then
+      echo "${line}|ERROR Domain"
+    else
+      echo "${line}|${response}"
+    fi
   else
     echo "${line}|ERROR DNS"
   fi
