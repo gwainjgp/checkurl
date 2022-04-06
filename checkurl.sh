@@ -6,7 +6,7 @@ do
     echo "${line}| ERROR not URL"
     continue
   fi
-  if [[ $line =~ \$\. ]]; then
+  if [[ $line =~ ^\. ]]; then
     echo "${line}| ERROR Domain"
     continue
   fi
