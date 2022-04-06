@@ -15,8 +15,8 @@ do
   result=$?
   if [ "$result" -eq "0" ]; then
     response=$(curl -I $line  2>/dev/null | head -n 1 | cut -d$' ' -f2 )
-    if [ "$reponse" -eq ""]; then
-      echo "${line}|ERROR Domain"
+    if [ -Z "$reponse"]; then
+      echo "${line}|ERROR not host"
     else
       echo "${line}|${response}"
     fi
