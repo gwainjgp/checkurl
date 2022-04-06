@@ -3,8 +3,11 @@
 while read line
 do
   # Check por first . or * and chop it
-  if [[ $line =~ ^\. ]] || [[ $line =~ ^\* ]]; then
+  if [[ $line =~ ^\. ]]; then
     line="${line:1}"
+  fi
+  if [[ $line =~ ^\*\. ]]; then
+    line="${line:2}"
   fi
   # Stop if asterisk
   if [[ $line =~ \* ]]; then
