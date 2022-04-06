@@ -6,9 +6,8 @@ do
     echo "${line}| ERROR not URL"
     continue
   fi
-  if [[ $line =~ ^\. ]]; then
-    echo "${line}| ERROR Domain"
-    continue
+  if [[ $line =~ ^\. ]] || [[ $line =~ ^\* ]]; then
+    line="${line:1}"
   fi
   host=$(echo $line | cut -f1 -d/)
   host $host > /dev/null 2>&1
@@ -16,7 +15,7 @@ do
   if [ "$result" -eq "0" ]; then
     response=$(curl -I $line  2>/dev/null | head -n 1 | cut -d$' ' -f2 )
     if [ -z "$response" ]; then
-      echo "${line}|ERROR not host"
+      echo "${line}|NOT host"
     else
       echo "${line}|${response}"
     fi
