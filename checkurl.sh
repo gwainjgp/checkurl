@@ -15,7 +15,7 @@ do
   result=$?
   if [ "$result" -eq "0" ]; then
     response=$(curl -I $line  2>/dev/null | head -n 1 | cut -d$' ' -f2 )
-    if [ -Z "$reponse"]; then
+    if [ -z "$reponse"]; then
       echo "${line}|ERROR not host"
     else
       echo "${line}|${response}"
