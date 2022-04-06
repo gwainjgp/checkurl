@@ -4,11 +4,11 @@ while read line
 do
   if [[ $line =~ \* ]] || [[ $line =~ ^\. ]]; then
     echo "${line}| ERROR not URL"
-    break
+    continue
   fi
   if [[ $line =~ \$\. ]]; then
     echo "${line}| ERROR Domain"
-    break
+    continue
   fi
   host=$(echo $line | cut -f1 -d/)
   host $host > /dev/null 2>&1
