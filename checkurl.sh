@@ -45,8 +45,13 @@ do
       fi
     else
       # Check Domain or hostname
-      response=$(checkWithCurl "$line"  )
-      echo "${original}| Hostname| ${response}"
+      host $line > /dev/null 2>&1
+      response=$?
+      if [[ "$response" -eq "0" ]]; then
+        echo "${original}| DNS Record| OK"
+      else
+        echo "${original}| DNS Record| ERROR ${response}"
+      fi
    fi
   fi
 done < "${1:-/dev/stdin}"
